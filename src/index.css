@@ -2,7 +2,7 @@
   box-sizing: border-box;
   font-family: sans-serif;
 }
-body{
+body {
   margin: 0;
   padding: 0;
 }
@@ -16,20 +16,27 @@ body{
 
 .analog-clock {
   border-radius: 50%;
-  background-color: yellow;
-  width: 200px;
-  height: 200px;
+  background-color: rgb(248, 248, 215);
+  width: fit-content;
+  height: fit-content;
+  padding: 15px;
   aspect-ratio: square;
-  position: relative;
-
+  .internal-container {
+    --size: 300px;
+    border-radius: 50%;
+    background-color: rgb(244, 239, 239);
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+  }
   .number {
     position: absolute;
-    padding-left: 10px;
+    padding-left: 8px;
     width: 100%;
     top: 50%;
     left: 50%;
-    font-size: x-small;
-    color: red;
+    font-size: small;
+    color: rgb(246, 64, 64);
     transform: translate(-50%, -50%) rotate(90deg)
       rotate(calc((var(--number) * 30deg)));
     span {
@@ -37,21 +44,24 @@ body{
       transform: rotate(-90deg) rotate(calc((var(--number) * -30deg)));
     }
   }
-  .number.big{
+  .number.big {
+    padding-left: 2px;
     color: black;
-    font-size: larger;
+    font-size: x-large;
   }
-  .center-hand{
+  .center-hand {
     position: absolute;
     width: 13px;
     height: 13px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 50%;
     background-color: black;
   }
-  .hour-hand, .minute-hand, .second-hand {
+  .hour-hand,
+  .minute-hand,
+  .second-hand {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -59,21 +69,21 @@ body{
     transform-origin: bottom center;
     border-radius: 3px;
   }
-  .hour-hand{
+  .hour-hand {
     width: 7px;
-    height: 50px;
+    height: 80px;
     background-color: black;
     transition-duration: 1s;
   }
-  .minute-hand{
+  .minute-hand {
     width: 5px;
-    height: 75px;
+    height: 120px;
     transition-duration: 1s;
     background-color: black;
   }
-  .second-hand{
+  .second-hand {
     width: 2.5px;
-    height: 75px;
-    background-color: red;
+    height: 120px;
+    background-color: rgb(246, 64, 64);
   }
 }

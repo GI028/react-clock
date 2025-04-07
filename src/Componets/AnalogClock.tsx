@@ -19,7 +19,7 @@ function timeAreSames(time1: Time, time2: Time) {
 }
 export default function AnalogClock() {
   const [_, setState] = useState<boolean>(false);
-  const refresh = () => setState((current)=>!current);
+  const refresh = () => setState((current) => !current);
   const ref = useRef<Time>({
     hours: 12,
     minutes: 0,
@@ -45,28 +45,36 @@ export default function AnalogClock() {
   }, []);
   return (
     <div className="analog-clock">
-      {numbers.map((number) => (
+      <div className="internal-container">
+        {numbers.map((number) => (
+          <div
+            key={number}
+            style={{ "--number": number } as React.CSSProperties as any}
+            className={`number ${number % 3 === 0 ? "big" : ""}`}
+          >
+            <span>{number}</span>
+          </div>
+        ))}
         <div
-          key={number}
-          style={{ "--number": number } as React.CSSProperties as any}
-          className={`number ${number % 3 === 0 ? "big" : ""}`}
-        >
-          <span>{number}</span>
-        </div>
-      ))}
-      <div
-        className="minute-hand"
-        style={{ transform: `rotate(${getHandAngle(time.minutes, 60, 6)}deg)` }}
-      />
-      <div
-        className="hour-hand"
-        style={{ transform: `rotate(${getHandAngle(time.hours, 12, 30)}deg)` }}
-      />
-      <div
-        className="second-hand"
-        style={{ transform: `rotate(${getHandAngle(time.seconds, 60, 6)}deg)` }}
-      />
-      <div className="center-hand" />
+          className="minute-hand"
+          style={{
+            transform: `rotate(${getHandAngle(time.minutes, 60, 6)}deg)`,
+          }}
+        />
+        <div
+          className="hour-hand"
+          style={{
+            transform: `rotate(${getHandAngle(time.hours, 12, 30)}deg)`,
+          }}
+        />
+        <div
+          className="second-hand"
+          style={{
+            transform: `rotate(${getHandAngle(time.seconds, 60, 6)}deg)`,
+          }}
+        />
+        <div className="center-hand" />
+      </div>
     </div>
   );
 }
