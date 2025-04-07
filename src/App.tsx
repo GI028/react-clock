@@ -1,7 +1,9 @@
+import AnalogClock from "./Componets/AnalogClock"
+
 function App() {
   return (
-      <div>
-        Analog Clock project
+      <div className="analog-clock-container">
+        <AnalogClock />
       </div>
   )
 }

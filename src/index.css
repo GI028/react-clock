@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.analog-clock-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.analog-clock {
+  border-radius: 50%;
+  background-color: yellow;
+  width: 200px;
+  height: 200px;
+  aspect-ratio: square;
+  position: relative;
+
+  .number {
+    position: absolute;
+    padding-left: 10px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    font-size: x-small;
+    color: red;
+    transform: translate(-50%, -50%) rotate(90deg)
+      rotate(calc((var(--number) * 30deg)));
+    span {
+      display: inline-block;
+      transform: rotate(-90deg) rotate(calc((var(--number) * -30deg)));
+    }
+  }
+  .number.big{
+    color: black;
+    font-size: larger;
+  }
+  .center-hand{
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    background-color: black;
+  }
+  .hour-hand, .minute-hand, .second-hand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -100%;
+    transform-origin: bottom center;
+    border-radius: 3px;
+  }
+  .hour-hand{
+    width: 7px;
+    height: 50px;
+    background-color: black;
+    transition-duration: 1s;
+  }
+  .minute-hand{
+    width: 5px;
+    height: 75px;
+    transition-duration: 1s;
+    background-color: black;
+  }
+  .second-hand{
+    width: 2.5px;
+    height: 75px;
+    background-color: red;
+  }
+}
