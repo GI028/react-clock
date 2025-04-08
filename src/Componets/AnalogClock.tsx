@@ -1,48 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import { Time } from "../types/Time";
 
 const numbers: number[] = [];
 for (let i = 1; i <= 12; i++) {
   numbers.push(i);
 }
 
-type Time = {
-  hours: number;
-  minutes: number;
-  seconds: number;
-};
-function timeAreSames(time1: Time, time2: Time) {
-  return (
-    time1.hours === time2.hours &&
-    time1.minutes === time2.minutes &&
-    time1.seconds === time2.seconds
-  );
+type Props = {
+  time:Time
 }
-export default function AnalogClock() {
-  const [_, setState] = useState<boolean>(false);
-  const refresh = () => setState((current) => !current);
-  const ref = useRef<Time>({
-    hours: 12,
-    minutes: 0,
-    seconds: 0,
-  });
-  const time = ref.current;
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date();
-      const newTime: Time = {
-        hours: now.getHours(),
-        minutes: now.getMinutes(),
-        seconds: now.getSeconds(),
-      };
-      const oldTime = ref.current;
-      // console.log(ref.current);
-      if (!timeAreSames(oldTime, newTime)) {
-        ref.current = newTime;
-        refresh();
-      }
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
+
+export default function AnalogClock({time}:Props) {
   return (
     <div className="analog-clock">
       <div className="internal-container">
