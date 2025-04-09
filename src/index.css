@@ -89,3 +89,27 @@ body {
     background-color: rgb(246, 64, 64);
   }
 }
+
+.digit {
+  overflow: hidden;
+  height: 1lh;
+  display: inline-block;
+  margin-bottom: -5px;
+  div {
+    /* transform: translateY(-1lh); */
+    transition-duration: 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.digital-clock {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  .seconds {
+    font-size: x-small;
+    color: rgb(246, 64, 64);
+  }
+}

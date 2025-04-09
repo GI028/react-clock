@@ -15,10 +15,15 @@ function useTime(defaultTime: Time): Time {
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
+      
+      const hours24 = now.getHours(); // 0–23
+      const hours12 = hours24 % 12 || 12;
+      
       const newTime: Time = {
-        hours: now.getHours(),
+        hours: hours12,
         minutes: now.getMinutes(),
         seconds: now.getSeconds(),
+        period: hours24 >= 12 ? "PM" : "AM",
       };
       const oldTime = ref.current;
       // console.log(ref.current);
