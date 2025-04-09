@@ -1,6 +1,7 @@
 import AnalogClock from "./Componets/AnalogClock";
 import DigitalClock from "./Componets/DigitalClock";
 import Digit from "./Componets/DigitalClockComponents/Digit";
+import ThemeSwicher from "./Componets/ThemeSwicher";
 import useTime from "./Helpers/CustomHooks/useTime";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           </>
         }
       />
+      <ThemeSwicher />
     </div>
   );
 }

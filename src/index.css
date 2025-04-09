@@ -4,14 +4,14 @@
   box-sizing: border-box;
   font-family: Orbitron, sans-serif;
 }
-:root {
-  --primary-color: rgb(246, 64, 64);
-  --secondary-color: #2ecc71;
-  --font-main: 'Helvetica', sans-serif;
-}
 body {
   margin: 0;
   padding: 0;
+  color: var(--secondary-color);
+}
+
+#root {
+  background-color: var(--bg-color);
 }
 
 .analog-clock-container {
@@ -19,11 +19,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .analog-clock {
   border-radius: 50%;
-  background-color: rgb(248, 248, 215);
+  background-color: var(--analog-bg-color);
   width: fit-content;
   height: fit-content;
   padding: 15px;
@@ -31,7 +33,7 @@ body {
   .internal-container {
     --size: 300px;
     border-radius: 50%;
-    background-color: rgb(244, 239, 239);
+    background-color: var(--analog-inside-bg-color);
     position: relative;
     width: var(--size);
     height: var(--size);
@@ -43,7 +45,7 @@ body {
     top: 50%;
     left: 50%;
     font-size: small;
-    color: rgb(246, 64, 64);
+    color: var(--primary-color);
     transform: translate(-50%, -50%) rotate(90deg)
       rotate(calc((var(--number) * 30deg)));
     span {
@@ -53,7 +55,7 @@ body {
   }
   .number.big {
     padding-left: 2px;
-    color: black;
+    color: var(--secondary-color);
     font-size: x-large;
   }
   .center-hand {
@@ -64,7 +66,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background-color: black;
+    background-color: var(--secondary-color);
   }
   .hour-hand,
   .minute-hand,
@@ -79,19 +81,19 @@ body {
   .hour-hand {
     width: 7px;
     height: 80px;
-    background-color: black;
+    background-color: var(--secondary-color);
     transition-duration: 1s;
   }
   .minute-hand {
     width: 5px;
     height: 120px;
     transition-duration: 1s;
-    background-color: black;
+    background-color: var(--secondary-color);
   }
   .second-hand {
     width: 2.5px;
     height: 120px;
-    background-color: rgb(246, 64, 64);
+    background-color: var(--primary-color);
   }
 }
 
@@ -115,34 +117,38 @@ body {
   gap: 5px;
   .seconds {
     font-size: x-small;
-    color: rgb(246, 64, 64);
+    color: var(--primary-color);
   }
 }
 
-.middle-analog{
+.middle-analog {
   position: absolute;
   width: 100%;
   height: 100%;
   padding: 20px;
   display: flex;
   align-items: center;
-  .right, .left,.top, .bottom{
+  .right,
+  .left,
+  .top,
+  .bottom {
     flex: 1;
     display: flex;
-    gap:8px;
+    gap: 8px;
     align-items: center;
     justify-content: center;
   }
-  .top, .bottom{
+  .top,
+  .bottom {
     flex-direction: column;
   }
 }
-.middle-analog.vertical{
+.middle-analog.vertical {
   flex-direction: column;
 }
 
-.digital-clock-container{
-  background-color: aliceblue;
+.digital-clock-container {
+  background-color: var(--digital-bg-color);
   width: fit-content;
   height: fit-content;
   padding: 2px 4px;
@@ -150,3 +156,26 @@ body {
   box-shadow: 0 0 2px 0 rgba(83, 83, 83, 0.448) inset;
 }
 
+.theme-swicher{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1{
+    font-size: x-large;
+  }
+  button{
+    width: 50px;
+    height: 30px;
+    margin: 5px;
+    border:none;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    transition-delay: 0;
+  }
+  button.actif{
+    width: 0;
+    cursor: default;
+    margin: 2.5px;
+    padding: 0;
+  }
+}
