@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Time } from "../types/Time";
 
 const numbers: number[] = [];
@@ -6,10 +7,15 @@ for (let i = 1; i <= 12; i++) {
 }
 
 type Props = {
-  time:Time
-}
+  time: Time;
+  top?: ReactNode;
+  right?: ReactNode;
+  bottom?: ReactNode;
+  left?: ReactNode;
+  children?: ReactNode;
+};
 
-export default function AnalogClock({time}:Props) {
+export default function AnalogClock({ time, ...chidren }: Props) {
   return (
     <div className="analog-clock">
       <div className="internal-container">
@@ -22,6 +28,17 @@ export default function AnalogClock({time}:Props) {
             <span>{number}</span>
           </div>
         ))}
+
+        <div className="middle-analog vertical">
+          <div className="top">{chidren.top}</div>
+          <div className="bottom">{chidren.bottom}</div>
+        </div>
+
+        <div className="middle-analog">
+          <div className="left">{chidren.right}</div>
+          <div className="right">{chidren.left}</div>
+        </div>
+        <div className="middle-analog">{chidren.children}</div>
         <div
           className="minute-hand"
           style={{

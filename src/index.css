@@ -4,6 +4,11 @@
   box-sizing: border-box;
   font-family: Orbitron, sans-serif;
 }
+:root {
+  --primary-color: rgb(246, 64, 64);
+  --secondary-color: #2ecc71;
+  --font-main: 'Helvetica', sans-serif;
+}
 body {
   margin: 0;
   padding: 0;
@@ -113,3 +118,35 @@ body {
     color: rgb(246, 64, 64);
   }
 }
+
+.middle-analog{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  .right, .left,.top, .bottom{
+    flex: 1;
+    display: flex;
+    gap:8px;
+    align-items: center;
+    justify-content: center;
+  }
+  .top, .bottom{
+    flex-direction: column;
+  }
+}
+.middle-analog.vertical{
+  flex-direction: column;
+}
+
+.digital-clock-container{
+  background-color: aliceblue;
+  width: fit-content;
+  height: fit-content;
+  padding: 2px 4px;
+  border-radius: 4px;
+  box-shadow: 0 0 2px 0 rgba(83, 83, 83, 0.448) inset;
+}
+

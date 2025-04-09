@@ -1,4 +1,4 @@
-import AnalogClock from "./Componets/AnalogClock"
+import AnalogClock from "./Componets/AnalogClock";
 import DigitalClock from "./Componets/DigitalClock";
 import Digit from "./Componets/DigitalClockComponents/Digit";
 import useTime from "./Helpers/CustomHooks/useTime";
@@ -8,15 +8,26 @@ function App() {
     hours: 12,
     minutes: 0,
     seconds: 0,
-    period:"AM"
+    period: "AM",
   });
   return (
-      <div className="analog-clock-container">
-        <DigitalClock time={time}/>
-        <AnalogClock time={time}/>
-        <Digit digits={["AM", "PM"]} selected={time.period} />
-      </div>
-  )
+    <div className="analog-clock-container">
+      <AnalogClock
+        time={time}
+        top="R. Giovanni"
+        bottom={
+          <>
+            <div className="digital-clock-container">
+              <Digit digits={["AM", "PM"]} selected={time.period} />
+            </div>
+            <div className="digital-clock-container">
+              <DigitalClock time={time} />
+            </div>
+          </>
+        }
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
